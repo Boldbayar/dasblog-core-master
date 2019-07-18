@@ -35,3 +35,13 @@ steps:
   workingDirectory: $(workingDirectory)
   
 - task: PublishBuildArtifacts@1
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    projects: 'src/MyProject.Web/*.csproj'
+    arguments: -o $(build.artifactStagingDirectory)
+    zipAfterPublish: true
+    modifyOutputPath: true
