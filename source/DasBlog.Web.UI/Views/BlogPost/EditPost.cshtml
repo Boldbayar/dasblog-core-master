@@ -1,0 +1,26 @@
+﻿@model DasBlog.Web.Models.BlogViewModels.PostViewModel
+@using DasBlog.Core.Common
+
+<form asp-controller="post" asp-action="edit" method="post" enctype="multipart/form-data">
+
+    <div class="modal-body">
+        @await Html.PartialAsync("BlogPostFields", Model)
+        <div class="form-group">
+            <div class="col-lg-6">
+                <input type="submit" name="submit" value="Edit"/>
+                <input asp-controller="Home" asp-action="Index" type="submit" name="submit" value="Cancel"/>
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.EntryId)
+    @Html.HiddenFor(m => m.Author)
+    @Html.HiddenFor(m => m.CreatedDateTime)
+
+</form>
+
+@section Scripts {
+    <rich-edit-scripts control-id="mytextarea"/>
+    
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
