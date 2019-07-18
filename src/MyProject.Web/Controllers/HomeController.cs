@@ -12,6 +12,7 @@ namespace MyProject.Web.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Info = "DigitalWorks";
             return View();
         }
 
