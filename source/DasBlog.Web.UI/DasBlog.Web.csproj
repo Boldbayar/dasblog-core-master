@@ -90,9 +90,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Remove="Themes\jinyang\_CommentAddPartial.cshtml" />
-    <None Include="logs\logs.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
    </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties" />
