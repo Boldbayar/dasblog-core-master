@@ -17,7 +17,7 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayName: Installing .NET Core 2.2.105
+  displayName: .NET Core 2.2.105 Суулгах
   inputs:
     packageType: 'sdk'
     version: '2.2.100'
@@ -33,14 +33,14 @@ steps:
   inputs:
     command: build
     projects: '**/*.sln'
-    arguments: '--no-restore --configuration Release' 
+    arguments: '--no-restore --configuration Release'
 
 - script: dotnet test source/DasBlog.Tests/UnitTests/ --logger trx;LogfileName=test_results.xml --results-directory $(System.DefaultWorkingDirectory)/test_results --filter Category=UnitTest
-  displayName: Run Unit Tests
+  displayName: Unit Tests ажиллуулах
   condition: and(succeeded(), eq(variables['imageName'], 'windows-2019'))
 
 - task: PublishTestResults@2
-  displayName: Publish Test Results
+  displayName: Publish хийх тест
   condition: and(always(), eq(variables['imageName'], 'windows-2019'))
   inputs:
     testRunner: VSTest
