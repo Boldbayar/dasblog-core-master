@@ -1,0 +1,44 @@
+﻿@using DasBlog.Core.Common
+@model DasBlog.Web.Models.BlogViewModels.AddCommentViewModel
+
+<div class="post-new-comment">
+    <form asp-controller="post" asp-action="comments" method="post">
+        <div class="modal-body form-horizontal">
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="@Constants.Name" class="control-label">@Constants.Name</label>
+                    <input id="@Constants.Name" name="@Constants.Name" value="@Model.Name" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="@Constants.Email" class="control-label">@Constants.Email</label>
+                    <input id="@Constants.Email" name="@Constants.Email" value="@Model.Email" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="HomePage" class="control-label"></label>
+                    <input asp-for="HomePage" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-6">
+                    <label for="@Constants.Content" class="control-label">@Constants.Content</label>
+                    <textarea id="@Constants.Content" name="@Constants.Content" rows="12" cols="60" class="form-control">@Model.Content</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <button type="submit" id="@Constants.SaveContentButtonId" class="btn btn-primary btn-block">SAVE COMMENT</button>
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.TargetEntryId)
+    </form>
+</div>
